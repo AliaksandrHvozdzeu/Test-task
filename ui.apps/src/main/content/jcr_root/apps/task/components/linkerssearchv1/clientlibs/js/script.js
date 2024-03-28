@@ -1,11 +1,11 @@
 function sendRequest() {
-    let inputForm = $('#inputForm').val();
+    let inputSearch = $('#inputSearch').val();
     let hiddenPathToResource = $('#hiddenPathToResource').val();
     let hiddenRequestErrorMessage = $('#hiddenRequestErrorMessage').val();
 
     $.ajax({
         type: 'GET', url: '/bin/searchlinks', data: {
-            "link": inputForm, "path": hiddenPathToResource,
+            "link": inputSearch, "path": hiddenPathToResource,
         }, success: displayResults, error: function (xhr, status, error) {
             handleRequestError(hiddenRequestErrorMessage);
             console.error(error);
@@ -25,7 +25,7 @@ function displayResults(results) {
     //Remove pagination for new results
     $('#pager').remove();
 
-    $table.append('<thead><tr><th scope="col" class="lintColumnName">Link URL</th><th scope="col" class="pathColumnName">Node path</th></tr></thead>');
+    $table.append('<thead><tr><th scope="col" class="cmp--container__table-column-link">Link URL</th><th scope="col" class="cmp--container__table-column-path">Node path</th></tr></thead>');
     if (results && results.length > 0) {
         var numRows = results.length;
         var numPerPage = hiddenCountRows;
@@ -51,31 +51,31 @@ function displayResults(results) {
         //Show count of results
         hiddenFoundMessage = hiddenFoundMessage.replace('{}', results.length)
         console.log(hiddenFoundMessage);
-        $('#messageValidation').text(hiddenFoundMessage);
+        $('#messageText').text(hiddenFoundMessage);
     } else {
         //Show messages "Not found"
-        $('#messageValidation').text(hiddenNotFoundMessage);
+        $('#messageText').text(hiddenNotFoundMessage);
     }
 }
 
 function clearSearchField() {
-    let inputForm = $('#inputForm');
+    let inputSearch = $('#inputSearch');
     let submitButton = $('#submitButton');
-    inputForm.val("");
+    inputSearch.val("");
     setNotValidUrl();
-    submitButton.prop("disabled", true).removeClass("send-button").addClass("send-button-disabled");
+    submitButton.prop("disabled", true).removeClass("cmp--container__submit-button").addClass("cmp--container__submit-button--disable");
 }
 
 function handleRequestError(errorMessage) {
-    let notValidURL = $('#notValidURL');
-    notValidURL.removeClass("disabled");
-    notValidURL.text(errorMessage);
+    let notValidUrlLabel = $('#notValidUrlLabel');
+    notValidUrlLabel.removeClass("disabled");
+    notValidUrlLabel.text(errorMessage);
 }
 
 
 function urlValidate() {
-    let inputForm = $('#inputForm');
-    if (/^(http|https|ftp):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/i.test(inputForm.val())) {
+    let inputSearch = $('#inputSearch');
+    if (/^(http|https|ftp):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/i.test(inputSearch.val())) {
         setNotValidUrl();
     } else {
         setValidUrl();
@@ -83,27 +83,27 @@ function urlValidate() {
 }
 
 function setNotValidUrl() {
-    let inputForm = $('#inputForm');
+    let inputSearch = $('#inputSearch');
     let submitButton = $('#submitButton');
-    let notValidURL = $('#notValidURL');
-    let searchLinkTitle = $('#searchLinkTitle');
-    let clearFielImg = $('#clearFielImg');
-    submitButton.prop("disabled", false).removeClass("send-button-disabled").addClass("send-button");
-    notValidURL.addClass("disabled");
-    inputForm.removeClass("inputNotValidField");
-    searchLinkTitle.removeClass("urlNotValidConnonStyle");
-    clearFielImg.attr('src', '/content/dam/task/svg/cancel_black.svg');
+    let notValidUrlLabel = $('#notValidUrlLabel');
+    let searchLinkLabel = $('#searchLinkLabel');
+    let clearInputButton = $('#clearInputButton');
+    submitButton.prop("disabled", false).removeClass("cmp--container__submit-button--disable").addClass("cmp--container__submit-button");
+    notValidUrlLabel.addClass("disabled");
+    inputSearch.removeClass("cmp--container__input--error");
+    searchLinkLabel.removeClass("cmp--container__common-red-color");
+    clearInputButton.attr('src', '/content/dam/task/svg/cancel_black.svg');
 }
 
 function setValidUrl() {
-    let inputForm = $('#inputForm');
+    let inputSearch = $('#inputSearch');
     let submitButton = $('#submitButton');
-    let notValidURL = $('#notValidURL');
-    let searchLinkTitle = $('#searchLinkTitle');
-    let clearFielImg = $('#clearFielImg');
-    submitButton.prop("disabled", true).removeClass("send-button").addClass("send-button-disabled");
-    notValidURL.removeClass("disabled");
-    inputForm.addClass("inputNotValidField");
-    searchLinkTitle.addClass("urlNotValidConnonStyle");
-    clearFielImg.attr('src', '/content/dam/task/svg/cancel_red.svg');
+    let notValidUrlLabel = $('#notValidUrlLabel');
+    let searchLinkLabel = $('#searchLinkLabel');
+    let clearInputButton = $('#clearInputButton');
+    submitButton.prop("disabled", true).removeClass("cmp--container__submit-button").addClass("cmp--container__submit-button--disable");
+    notValidUrlLabel.removeClass("disabled");
+    inputSearch.addClass("cmp--container__input--error");
+    searchLinkLabel.addClass("cmp--container__common-red-color");
+    clearInputButton.attr('src', '/content/dam/task/svg/cancel_red.svg');
 }

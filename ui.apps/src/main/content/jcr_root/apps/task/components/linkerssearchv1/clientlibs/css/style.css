@@ -71,7 +71,7 @@ th, td {
 	border-color: var(--black) !important;
 }
 
-.linkField {
+.cmp--container__input {
 	height: 35px;
 	width: 80%;
 	border-color: var(--black);
@@ -82,25 +82,25 @@ th, td {
 	margin-left: 5px;
 }
 
-.lintColumnName {
+.cmp--container__table-column-link {
 	font-family: myBoldFont, serif;
 }
 
-.pathColumnName {
+.cmp--container__table-column-path {
 	font-family: myBoldFont, serif;
 }
 
-.searchBox {
+.cmp--container {
 	padding: 5px 5px 5px 5px;
 }
 
-.searchLinkLabel {
+.cmp--container__label {
 	margin-bottom: 10px;
 	font-family: myBoldFont, serif;
 	margin-left: 5px;
 }
 
-.send-button {
+.cmp--container__submit-button {
 	font-size: 20px;
 	color: var(--white);
 	border-radius: 25px;
@@ -110,7 +110,7 @@ th, td {
 	margin-left: 20px;
 }
 
-.send-button:hover {
+.cmp--container__submit-button:hover {
 	font-size: 20px;
 	color: var(--grey);
 	border-radius: 25px;
@@ -120,7 +120,7 @@ th, td {
 	margin-left: 20px;
 }
 
-.send-button-disabled {
+.cmp--container__submit-button--disable {
 	font-size: 20px;
 	color: var(--grey);
 	border-radius: 25px;
@@ -130,7 +130,7 @@ th, td {
 	margin-left: 20px;
 }
 
-.messageValidation {
+.cmp--container__message_text {
 	margin-top: 10px;
 	color: var(--black);
 	font-size: 17px;
@@ -139,11 +139,7 @@ th, td {
 	font-family: myBoldFont, serif;
 }
 
-.search-panel {
-	margin: 2px 2px 2px 2px;
-}
-
-.componentTitle {
+.cmp--container__title {
 	color: var(--black);
 	font-family: myBoldFont, serif;
 	margin-left: 5px;
@@ -153,18 +149,18 @@ th, td {
 	visibility: hidden;
 }
 
-.clearFielImg {
+.cmp--container__clear-button {
 	position: absolute;
 	margin-left: -40px;
 	margin-top: 12px;
 	width: 34px;
 }
 
-.urlNotValidConnonStyle {
+.cmp--container__common-red-color {
 	color: var(--red);
 }
 
-.notValidURL {
+.cmp--container_not-valid-url {
 	margin-left: 5px;
 	font-style: italic;
 }
@@ -173,7 +169,7 @@ th, td {
 	visibility: hidden;
 }
 
-.inputNotValidField {
+.cmp--container__input--error {
 	border-color: var(--red); !important;
 	border-width: 2px;
 }

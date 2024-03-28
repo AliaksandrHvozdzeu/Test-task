@@ -7,23 +7,23 @@
         <input type="hidden" id="hiddenFoundMessage" value="${model.foundMessage}"/>
         <input type="hidden" id="hiddenNotFoundMessage" value="${model.notFoundMessage}"/>
         <input type="hidden" id="hiddenRequestErrorMessage" value="${model.requestErrorMessage}"/>
-        <div class="searchBox" style="background-color: ${model.backgroundHexColor @ context='styleToken'};">
-            <h1 class="componentTitle">LINKS SEARCH</h1>
-            <label for="inputForm" class="searchLinkLabel" id="searchLinkTitle">SEARCH LINK</label>
+        <div class="cmp--container" style="background-color: ${model.backgroundHexColor @ context='styleToken'};">
+            <h1 class="cmp--container__title">LINKS SEARCH</h1>
+            <label for="inputSearch" class="cmp--container__label" id="searchLinkLabel">SEARCH LINK</label>
             <div>
-                <input type="text" class="linkField" id="inputForm" oninput="urlValidate()"/>
-                <img alt="Clear Button" class="clearFielImg" id="clearFielImg"
+                <input type="text" class="cmp--container__input" id="inputSearch" oninput="urlValidate()"/>
+                <img alt="Clear Button" class="cmp--container__clear-button" id="clearInputButton"
                      onclick="clearSearchField()" src="/content/dam/task/svg/cancel_black.svg"/>
-                <button class="send-button-disabled"
+                <button class="cmp--container__submit-button--disable"
                         disabled id="submitButton" onclick="sendRequest()" type="button">
                     SUBMIT
                 </button>
-                <span class="notValidURL disabled" id="notValidURL"
+                <span class="cmp--container_not-valid-url disabled" id="notValidUrlLabel"
                       style="color: ${model.errorMessageHexColor @ context='styleToken'};">${model.urlIsNotValidMessage}</span>
             </div>
-            <div class="messageValidation" id="messageValidation"></div>
-            <div id="searchResult" style="overflow-x: auto;" class="searchBox">
-                <table class="paginated" id="paginatedTable">
+            <div class="cmp--container__message_text" id="messageText"></div>
+            <div id="searchResult" style="overflow-x: auto;" class="cmp--container">
+                <table id="paginatedTable">
                     <tbody>
                     </tbody>
                 </table>
