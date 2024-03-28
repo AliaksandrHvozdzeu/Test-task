@@ -4,9 +4,14 @@ function sendRequest() {
     let hiddenRequestErrorMessage = $('#hiddenRequestErrorMessage').val();
 
     $.ajax({
-        type: 'GET', url: '/bin/searchlinks', data: {
-            "link": inputSearch, "path": hiddenPathToResource,
-        }, success: displayResults, error: function (xhr, status, error) {
+        type: 'GET',
+        url: '/bin/searchlinks',
+        data: {
+            "link": inputSearch,
+            "path": hiddenPathToResource,
+        },
+        success: displayResults,
+        error: function (xhr, status, error) {
             handleRequestError(hiddenRequestErrorMessage);
             console.error(error);
         }
@@ -27,19 +32,19 @@ function displayResults(results) {
 
     $table.append('<thead><tr><th scope="col" class="cmp--container__table-column-link">Link URL</th><th scope="col" class="cmp--container__table-column-path">Node path</th></tr></thead>');
     if (results && results.length > 0) {
-        var numRows = results.length;
-        var numPerPage = hiddenCountRows;
-        var numPages = Math.ceil(numRows / numPerPage);
-        var currentPage = 0;
+        let numRows = results.length;
+        let numPerPage = hiddenCountRows;
+        let numPages = Math.ceil(numRows / numPerPage);
+        let currentPage = 0;
         //Add rows to table
-        for (var i = 0; i < numRows; i++) {
-            var result = results[i];
+        for (let i = 0; i < numRows; i++) {
+            let result = results[i];
             $table.append('<tr><td>' + result.link + '</td><td>' + result.path + '</td></tr>');
         }
         //Add paggination
         $table.find('tbody tr').hide().slice(currentPage * numPerPage, (currentPage + 1) * numPerPage).show();
         //Add pagination pages
-        for (var page = 0; page < numPages; page++) {
+        for (let page = 0; page < numPages; page++) {
             $('<span class="page-number"></span>').text(page + 1).bind('click', {newPage: page}, function (event) {
                 currentPage = event.data['newPage'];
                 $table.find('tbody tr').hide().slice(currentPage * numPerPage, (currentPage + 1) * numPerPage).show();
@@ -50,7 +55,6 @@ function displayResults(results) {
         $pager.insertAfter($table).find('span.page-number:first').addClass('active');
         //Show count of results
         hiddenFoundMessage = hiddenFoundMessage.replace('{}', results.length)
-        console.log(hiddenFoundMessage);
         $('#messageText').text(hiddenFoundMessage);
     } else {
         //Show messages "Not found"
@@ -88,7 +92,11 @@ function setNotValidUrl() {
     let notValidUrlLabel = $('#notValidUrlLabel');
     let searchLinkLabel = $('#searchLinkLabel');
     let clearInputButton = $('#clearInputButton');
-    submitButton.prop("disabled", false).removeClass("cmp--container__submit-button--disable").addClass("cmp--container__submit-button");
+
+    submitButton.prop("disabled", false)
+        .removeClass("cmp--container__submit-button--disable")
+        .addClass("cmp--container__submit-button");
+
     notValidUrlLabel.addClass("disabled");
     inputSearch.removeClass("cmp--container__input--error");
     searchLinkLabel.removeClass("cmp--container__common-red-color");
@@ -101,7 +109,11 @@ function setValidUrl() {
     let notValidUrlLabel = $('#notValidUrlLabel');
     let searchLinkLabel = $('#searchLinkLabel');
     let clearInputButton = $('#clearInputButton');
-    submitButton.prop("disabled", true).removeClass("cmp--container__submit-button").addClass("cmp--container__submit-button--disable");
+
+    submitButton.prop("disabled", true)
+        .removeClass("cmp--container__submit-button")
+        .addClass("cmp--container__submit-button--disable");
+
     notValidUrlLabel.removeClass("disabled");
     inputSearch.addClass("cmp--container__input--error");
     searchLinkLabel.addClass("cmp--container__common-red-color");
