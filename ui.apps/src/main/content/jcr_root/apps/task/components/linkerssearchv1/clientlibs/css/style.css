@@ -18,9 +18,49 @@ button:focus  {
 	border:none;
 }
 
+div.pager {
+	text-align: center;
+	margin: 1em 0;
+}
+
+div.pager span {
+	display: inline-block;
+	width: 1.8em;
+	height: 1.8em;
+	line-height: 1.8;
+	text-align: center;
+	cursor: pointer;
+	background: #000000;
+	color: #ffffff;
+	margin-right: 0.5em;
+}
+
+div.pager span.active {
+	background: #A8A8A8;
+}
+
 :active, :hover, :focus {
 	outline: 0;
 	outline-offset: 0;
+}
+
+table, th, td {
+	border: 1px solid black;
+	border-collapse: collapse;
+}
+
+table {
+	border-collapse: collapse;
+	border-color: #000 !important;
+	width: 100%;
+	border-width: 1px;
+}
+
+th, td {
+	text-align: left;
+	padding: 8px;
+	border-width: 1px;
+	border-color: #000 !important;
 }
 
 .linkField {
@@ -32,6 +72,14 @@ button:focus  {
 	margin-top: 10px;
 	margin-bottom: 10px;
 	margin-left: 5px;
+}
+
+.lintColumnName {
+	font-family: myBoldFont;
+}
+
+.pathColumnName {
+	font-family: myBoldFont;
 }
 
 .searchBox {
@@ -66,9 +114,11 @@ button:focus  {
 
 .messageValidation {
 	margin-top: 10px;
-	color: #C8102F;
-	font-size: 15px;
+	color: #000000;
+	font-size: 17px;
 	margin-left: 5px;
+	margin-bottom: 15px;
+	font-family: myBoldFont;
 }
 
 .search-panel {
@@ -79,4 +129,8 @@ button:focus  {
 	color: #000000;
 	font-family: myBoldFont;
 	margin-left: 5px;
+}
+
+.hidden {
+	visibility: hidden;
 }

@@ -15,6 +15,7 @@
         buttonTextHexColor: "[name='./buttonTextHexColor']",
         buttonUnavailableBackgroundHexColor: "[name='./buttonUnavailableBackgroundHexColor']",
         buttonUnavailableTextHexColor: "[name='./buttonUnavailableTextHexColor']",
+        pathToResource: "[name='./pathToResource']",
     }
 
     registry.register(FOUNDATION_VALIDATION_VALIDATOR, {
@@ -105,9 +106,15 @@
         }
     });
 
-    function getLinks() {
-        alert("HEELO");
-    }
-
+    registry.register(FOUNDATION_VALIDATION_VALIDATOR, {
+        selector: selectors.pathToResource,
+        validate: function() {
+            let fieldValue = $(selectors.pathToResource).val();
+            if (fieldValue.length <= 0) {
+                return "Path cannot be empty";
+            }
+            return;
+        }
+    });
 
 })(jQuery, Coral);

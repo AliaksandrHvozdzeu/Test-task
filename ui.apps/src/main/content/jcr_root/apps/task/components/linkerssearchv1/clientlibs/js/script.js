@@ -1,12 +1,15 @@
 function sendRequest(path) {
+    let inputForm = $('#inputForm').val();
+    let hiddenPathToResource = $('#hiddenPathToResource').val();
+
     $.ajax({
         type: 'GET',
         url: '/bin/searchlinks',
         data: {
-            'path': path
+            "link": inputForm,
+            "path": hiddenPathToResource,
         },
         success: function (response) {
-            console.log(response);
             displayResults(response);
         },
         error: function (xhr, status, error) {
@@ -16,24 +19,37 @@ function sendRequest(path) {
 }
 
 function displayResults(results) {
-    var $table = $('#paginatedTable');
-    $table.empty(); // Clear existing content
-    $table.append('<thead><tr><th scope="col">Link URL</th><th scope="col">Node path</th></tr></thead>');
+
+    let hiddenCountRows = $('#hiddenCountRows').val();
+    let hiddenFoundMessage = $('#hiddenFoundMessage').val();
+    let hiddenNotFoundMessage = $('#hiddenNotFoundMessage').val();
+    let $table = $('#paginatedTable');
+    let $pager = $('<div class="pager" id="pager"></div>');
+
+    //Empty (clear) table for new results
+    $table.empty();
+    //Remove pagination for new results
+    $('#pager').remove();
+
+    $table.append('<thead><tr><th scope="col" class="lintColumnName">Link URL</th><th scope="col" class="pathColumnName">Node path</th></tr></thead>');
 
     if (results && results.length > 0) {
         var numRows = results.length;
-        var numPerPage = 10;
+        var numPerPage = hiddenCountRows;
         var numPages = Math.ceil(numRows / numPerPage);
         var currentPage = 0;
 
+        //Add rows to table
         for (var i = 0; i < numRows; i++) {
             var result = results[i];
-            $table.append('<tr><td>' + result.link + '</td><td>' + result.pagePath + '</td></tr>');
+            $table.append('<tr><td>' + result.link + '</td><td>' + result.path + '</td></tr>');
         }
 
+        //Add paggination
         $table.find('tbody tr').hide().slice(currentPage * numPerPage, (currentPage + 1) * numPerPage).show();
 
-        var $pager = $('<div class="pager"></div>');
+
+        //Add pagination pages
         for (var page = 0; page < numPages; page++) {
             $('<span class="page-number"></span>').text(page + 1).bind('click', { newPage: page }, function (event) {
                 currentPage = event.data['newPage'];
@@ -41,8 +57,19 @@ function displayResults(results) {
                 $(this).addClass('active').siblings().removeClass('active');
             }).appendTo($pager).addClass('clickable');
         }
-        $pager.insertBefore($table).find('span.page-number:first').addClass('active');
+
+        //Make pagination button as active
+        $pager.insertAfter($table).find('span.page-number:first').addClass('active');
+
+        //Show count of results
+        hiddenFoundMessage = hiddenFoundMessage.replace('{}', results.length)
+        console.log(hiddenFoundMessage);
+        $('#messageValidation').text(hiddenFoundMessage);
+
+
     } else {
-        $table.append('<tbody><tr><td colspan="2">No results found</td></tr></tbody>');
+        //Show messages "Not found"
+        $('#messageValidation').text(hiddenNotFoundMessage);
+        $table.remove();
     }
 }

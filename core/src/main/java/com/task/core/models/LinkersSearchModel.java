@@ -37,6 +37,12 @@ public class LinkersSearchModel {
     @Inject
     private String buttonUnavailableTextHexColor;
 
+    @Inject
+    private String pathToResource;
+
+    @Inject
+    private String notFoundMessage;
+
     @PostConstruct
     protected void init() {
 
@@ -72,5 +78,13 @@ public class LinkersSearchModel {
 
     public String getButtonUnavailableTextHexColor() {
         return buttonUnavailableTextHexColor;
+    }
+
+    public String getPathToResource() {
+        return pathToResource;
+    }
+
+    public String getNotFoundMessage() {
+        return notFoundMessage;
     }
 }
