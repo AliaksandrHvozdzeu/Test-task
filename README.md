@@ -3,7 +3,7 @@
 
 For testing, I updated some properties in "We.Retail" pages.
 
-Link to component: [a link](https://github.com/AliaksandrHvozdzeu/task/tree/main/ui.apps/src/main/content/jcr_root/apps/task/components/linkerssearchv1)
+[Link to component](https://github.com/AliaksandrHvozdzeu/task/tree/main/ui.apps/src/main/content/jcr_root/apps/task/components/linkerssearchv1)
 
 ### Component dialog
 1. Path to resource ![Tab 1](https://github.com/AliaksandrHvozdzeu/task/blob/main/resources/dialod_tab_1.png?raw=true)
