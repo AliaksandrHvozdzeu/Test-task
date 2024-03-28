@@ -1,6 +1,7 @@
-function sendRequest(path) {
+function sendRequest() {
     let inputForm = $('#inputForm').val();
     let hiddenPathToResource = $('#hiddenPathToResource').val();
+    let hiddenRequestErrorMessage = $('#hiddenRequestErrorMessage').val();
 
     $.ajax({
         type: 'GET',
@@ -9,10 +10,9 @@ function sendRequest(path) {
             "link": inputForm,
             "path": hiddenPathToResource,
         },
-        success: function (response) {
-            displayResults(response);
-        },
+        success: displayResults,
         error: function (xhr, status, error) {
+            handleRequestError(hiddenRequestErrorMessage);
             console.error(error);
         }
     });
@@ -51,7 +51,7 @@ function displayResults(results) {
 
         //Add pagination pages
         for (var page = 0; page < numPages; page++) {
-            $('<span class="page-number"></span>').text(page + 1).bind('click', { newPage: page }, function (event) {
+            $('<span class="page-number"></span>').text(page + 1).bind('click', {newPage: page}, function (event) {
                 currentPage = event.data['newPage'];
                 $table.find('tbody tr').hide().slice(currentPage * numPerPage, (currentPage + 1) * numPerPage).show();
                 $(this).addClass('active').siblings().removeClass('active');
@@ -70,6 +70,33 @@ function displayResults(results) {
     } else {
         //Show messages "Not found"
         $('#messageValidation').text(hiddenNotFoundMessage);
-        $table.remove();
+
+        //НАДО ПОДУМАТЬ НАСЧЕТ ТАБЛИЦЫ
+        //$table.remove();
+    }
+}
+
+function handleRequestError(errorMessage) {
+    let notValidURL = $('#notValidURL');
+    notValidURL.removeClass("disabled");
+    notValidURL.text(errorMessage);
+}
+
+function urlValidate() {
+    let inputForm = $('#inputForm');
+    let submitButton = $('#submitButton');
+    let notValidURL = $('#notValidURL');
+    let searchLinkTitle = $('#searchLinkTitle');
+
+    if (/^(http|https|ftp):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/i.test(inputForm.val())) {
+        submitButton.prop("disabled", false).removeClass("send-button-disabled").addClass("send-button");
+        notValidURL.addClass("disabled");
+        inputForm.removeClass("inputNotValidField");
+        searchLinkTitle.removeClass("urlNotValidConnonStyle");
+    } else {
+        submitButton.prop("disabled", true).removeClass("send-button").addClass("send-button-disabled");
+        notValidURL.removeClass("disabled");
+        inputForm.addClass("inputNotValidField");
+        searchLinkTitle.addClass("urlNotValidConnonStyle");
     }
 }

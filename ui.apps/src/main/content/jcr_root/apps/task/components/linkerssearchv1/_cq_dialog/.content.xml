@@ -122,6 +122,20 @@
                                     name="./foundMessage"
                                     required="{Boolean}true"
                                     value="Found {} links:"/>
+                            <urlIsNotValidMessage
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="URL Is Not Valid Message"
+                                    name="./urlIsNotValidMessage"
+                                    required="{Boolean}true"
+                                    value="URL is not valid"/>
+                            <requestErrorMessage
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="Request Error Message"
+                                    name="./requestErrorMessage"
+                                    required="{Boolean}true"
+                                    value="Request Error"/>
                         </items>
                     </column>
                 </items>

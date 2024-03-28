@@ -66,7 +66,7 @@ th, td {
 .linkField {
 	height: 35px;
 	width: 80%;
-	border-color: #000 !important;
+	border-color: #000;
 	border-width: 1px;
 	font-size: 20px;
 	margin-top: 10px;
@@ -112,6 +112,16 @@ th, td {
 	margin-left: 20px;
 }
 
+.send-button-disabled {
+	font-size: 20px;
+	color: #6D7177;
+	border-radius: 25px;
+	background-color: #A8A8A8;
+	height: 35px;
+	width: 15%;
+	margin-left: 20px;
+}
+
 .messageValidation {
 	margin-top: 10px;
 	color: #000000;
@@ -133,4 +143,22 @@ th, td {
 
 .hidden {
 	visibility: hidden;
+}
+
+.urlNotValidConnonStyle {
+	color: #C8102F;
+}
+
+.notValidURL {
+	margin-left: 5px;
+	font-style: italic;
+}
+
+.disabled {
+	visibility: hidden;
+}
+
+.inputNotValidField {
+	border-color: #C8102F !important;
+	border-width: 2px;
 }

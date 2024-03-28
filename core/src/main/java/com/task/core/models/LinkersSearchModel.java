@@ -43,6 +43,12 @@ public class LinkersSearchModel {
     @Inject
     private String notFoundMessage;
 
+    @Inject
+    private String urlIsNotValidMessage;
+
+    @Inject
+    private String requestErrorMessage;
+
     @PostConstruct
     protected void init() {
 
@@ -86,5 +92,13 @@ public class LinkersSearchModel {
 
     public String getNotFoundMessage() {
         return notFoundMessage;
+    }
+
+    public String getUrlIsNotValidMessage() {
+        return urlIsNotValidMessage;
+    }
+
+    public String getRequestErrorMessage() {
+        return requestErrorMessage;
     }
 }

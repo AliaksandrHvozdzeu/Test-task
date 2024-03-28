@@ -1,19 +1,18 @@
 <sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html" data-sly-call="${clientlib.css @ categories='practice.task'}"/>
 <div>
     <sly data-sly-use.model="com.task.core.models.LinkersSearchModel">
-
         <input id="hiddenCountRows" value="${model.countPaginationRows}" class="hidden" />
         <input id="hiddenPathToResource" value="${model.pathToResource}" class="hidden" />
         <input id="hiddenFoundMessage" value="${model.foundMessage}" class="hidden" />
         <input id="hiddenNotFoundMessage" value="${model.notFoundMessage}" class="hidden" />
-
+        <input id="hiddenRequestErrorMessage" value="${model.requestErrorMessage}" class="hidden" />
         <div style="background-color: ${model.backgroundHexColor @ context='styleToken'};" class="searchBox">
             <h1 class="componentTitle">LINKS SEARCH</h1>
-            <span class="searchLinkLabel">SEARCH LINK</span>
+            <span class="searchLinkLabel" id="searchLinkTitle">SEARCH LINK</span>
             <div>
-                <!-- <span id="hiddenCountRow">${model.countPaginationRows}</span> -->
-                <input id="inputForm" type="text" class="linkField" value="https://www.onliner.by"/>
-                <button class="send-button" onclick="sendRequest()" type="button">SUBMIT</button>
+                <input id="inputForm" type="text" class="linkField" oninput="urlValidate()" />
+                <button id="submitButton" class="send-button-disabled" onclick="sendRequest()" type="button" disabled>SUBMIT</button>
+                <span style="color: ${model.errorMessageHexColor @ context='styleToken'};" class="notValidURL disabled" id="notValidURL">${model.urlIsNotValidMessage}</span>
             </div>
             <div class="messageValidation" id="messageValidation"></div>
             <div id="searchResult" style="overflow-x: auto;">
