@@ -11,11 +11,9 @@
         foundMessage: "[name='./foundMessage']",
         errorMessageHexColor: "[name='./errorMessageHexColor']",
         backgroundHexColor: "[name='./backgroundHexColor']",
-        buttonBackgroundHexColor: "[name='./buttonBackgroundHexColor']",
-        buttonTextHexColor: "[name='./buttonTextHexColor']",
-        buttonUnavailableBackgroundHexColor: "[name='./buttonUnavailableBackgroundHexColor']",
-        buttonUnavailableTextHexColor: "[name='./buttonUnavailableTextHexColor']",
         pathToResource: "[name='./pathToResource']",
+        requestErrorMessage: "[name='./requestErrorMessage']",
+        urlIsNotValidMessage: "[name='./urlIsNotValidMessage']",
     }
 
     registry.register(FOUNDATION_VALIDATION_VALIDATOR, {
@@ -63,53 +61,31 @@
     });
 
     registry.register(FOUNDATION_VALIDATION_VALIDATOR, {
-        selector: selectors.buttonBackgroundHexColor,
-        validate: function() {
-            let fieldValue = $(selectors.buttonBackgroundHexColor).val();
-            if (!fieldValue.startsWith(HEX_CODE_SYMBOL)) {
-                return HEX_CODE_ERROR_MESSAGE;
-            }
-            return;
-        }
-    });
-
-    registry.register(FOUNDATION_VALIDATION_VALIDATOR, {
-        selector: selectors.buttonTextHexColor,
-        validate: function() {
-            let fieldValue = $(selectors.buttonTextHexColor).val();
-            if (!fieldValue.startsWith(HEX_CODE_SYMBOL)) {
-                return HEX_CODE_ERROR_MESSAGE;
-            }
-            return;
-        }
-    });
-
-    registry.register(FOUNDATION_VALIDATION_VALIDATOR, {
-        selector: selectors.buttonUnavailableBackgroundHexColor,
-        validate: function() {
-            let fieldValue = $(selectors.buttonUnavailableBackgroundHexColor).val();
-            if (!fieldValue.startsWith(HEX_CODE_SYMBOL)) {
-                return HEX_CODE_ERROR_MESSAGE;
-            }
-            return;
-        }
-    });
-
-    registry.register(FOUNDATION_VALIDATION_VALIDATOR, {
-        selector: selectors.buttonUnavailableTextHexColor,
-        validate: function() {
-            let fieldValue = $(selectors.buttonUnavailableTextHexColor).val();
-            if (!fieldValue.startsWith(HEX_CODE_SYMBOL)) {
-                return HEX_CODE_ERROR_MESSAGE;
-            }
-            return;
-        }
-    });
-
-    registry.register(FOUNDATION_VALIDATION_VALIDATOR, {
         selector: selectors.pathToResource,
         validate: function() {
             let fieldValue = $(selectors.pathToResource).val();
+            if (fieldValue.length <= 0) {
+                return "Path cannot be empty";
+            }
+            return;
+        }
+    });
+
+    registry.register(FOUNDATION_VALIDATION_VALIDATOR, {
+        selector: selectors.requestErrorMessage,
+        validate: function() {
+            let fieldValue = $(selectors.requestErrorMessage).val();
+            if (fieldValue.length <= 0) {
+                return "Path cannot be empty";
+            }
+            return;
+        }
+    });
+
+    registry.register(FOUNDATION_VALIDATION_VALIDATOR, {
+        selector: selectors.urlIsNotValidMessage,
+        validate: function() {
+            let fieldValue = $(selectors.urlIsNotValidMessage).val();
             if (fieldValue.length <= 0) {
                 return "Path cannot be empty";
             }

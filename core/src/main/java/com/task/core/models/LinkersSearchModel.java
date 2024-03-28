@@ -26,18 +26,6 @@ public class LinkersSearchModel {
     private String backgroundHexColor;
 
     @Inject
-    private String buttonBackgroundHexColor;
-
-    @Inject
-    private String buttonTextHexColor;
-
-    @Inject
-    private String buttonUnavailableBackgroundHexColor;
-
-    @Inject
-    private String buttonUnavailableTextHexColor;
-
-    @Inject
     private String pathToResource;
 
     @Inject
@@ -68,22 +56,6 @@ public class LinkersSearchModel {
 
     public String getBackgroundHexColor() {
         return backgroundHexColor;
-    }
-
-    public String getButtonBackgroundHexColor() {
-        return buttonBackgroundHexColor;
-    }
-
-    public String getButtonTextHexColor() {
-        return buttonTextHexColor;
-    }
-
-    public String getButtonUnavailableBackgroundHexColor() {
-        return buttonUnavailableBackgroundHexColor;
-    }
-
-    public String getButtonUnavailableTextHexColor() {
-        return buttonUnavailableTextHexColor;
     }
 
     public String getPathToResource() {
