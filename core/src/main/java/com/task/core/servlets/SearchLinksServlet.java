@@ -22,9 +22,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;
 
-@Component(immediate = true, service = {Servlet.class}, property =
-        {Constants.SERVICE_DESCRIPTION + "=Search Links Servlet", "sling.servlet.methods="
-                + HttpConstants.METHOD_GET, "sling.servlet.paths=" + "/bin/searchlinks"}
+/**
+ * Servlet for searching links by path
+ */
+@Component(
+        immediate = true,
+        service = {Servlet.class},
+        property = {Constants.SERVICE_DESCRIPTION + "=Search Links Servlet", "sling.servlet.methods=" +
+                HttpConstants.METHOD_GET, "sling.servlet.paths=" + "/bin/searchlinks"}
 )
 public class SearchLinksServlet extends SlingSafeMethodsServlet {
 
@@ -60,7 +65,8 @@ public class SearchLinksServlet extends SlingSafeMethodsServlet {
                 responseList.add(resp);
             });
 
-            Type listType = new TypeToken<List<Response>>() {}.getType();
+            Type listType = new TypeToken<List<Response>>() {
+            }.getType();
             Gson gson = new Gson();
             String json = gson.toJson(responseList, listType);
             response.setContentType(APPLICATION_JSON_FORMAT_RESPONSE);
@@ -72,6 +78,14 @@ public class SearchLinksServlet extends SlingSafeMethodsServlet {
         }
     }
 
+    /**
+     * The method for getting list with paths
+     * @param path String
+     * @param linkToFind String
+     * @param resolver ResourceResolver
+     * @return List<String> with paths
+     * @throws RepositoryException
+     */
     private List<String> findNodesWithLink(String path, String linkToFind, ResourceResolver resolver) throws RepositoryException {
         List<String> nodesWithLink = new ArrayList<>();
         Session session = resolver.adaptTo(Session.class);
@@ -82,6 +96,12 @@ public class SearchLinksServlet extends SlingSafeMethodsServlet {
         return nodesWithLink;
     }
 
+    /**
+     * The method for getting page URL by path
+     * @param resolver ResourceResolver
+     * @param path String
+     * @return String URL
+     */
     private String getPageUrlByPath(ResourceResolver resolver, String path) {
         String externalizedURL = null;
         if (externalizer != null && resolver != null) {
@@ -92,6 +112,13 @@ public class SearchLinksServlet extends SlingSafeMethodsServlet {
         return externalizedURL;
     }
 
+    /**
+     * The method for building list with founded paths
+     * @param node Node
+     * @param linkToFind String
+     * @param nodesWithLink List<String>
+     * @throws RepositoryException
+     */
     private void findNodesWithLinkRecursive(Node node, String linkToFind, List<String> nodesWithLink) throws RepositoryException {
         PropertyIterator properties = node.getProperties();
         while (properties.hasNext()) {

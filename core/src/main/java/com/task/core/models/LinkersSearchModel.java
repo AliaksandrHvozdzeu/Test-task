@@ -7,10 +7,10 @@ import org.apache.sling.models.annotations.Model;
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
-@Model(
-        adaptables = Resource.class,
-        defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL
-)
+/**
+ * LInks Search Component Model
+ */
+@Model(adaptables = Resource.class, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public class LinkersSearchModel {
 
     @Inject
