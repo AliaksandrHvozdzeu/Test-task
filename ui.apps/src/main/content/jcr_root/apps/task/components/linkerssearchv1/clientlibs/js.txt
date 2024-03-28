@@ -1,3 +1,3 @@
 #base=js
-modalvalidation.js
-linkerssearchv1.js
+validation.js
+script.js

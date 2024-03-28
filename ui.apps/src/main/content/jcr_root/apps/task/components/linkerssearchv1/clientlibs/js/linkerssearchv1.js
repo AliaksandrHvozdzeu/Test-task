@@ -1,3 +1,0 @@
-function sendRequest() {
-    alert("HELLO");
-}

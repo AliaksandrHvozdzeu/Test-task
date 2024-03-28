@@ -1,0 +1,82 @@
+@font-face {
+	font-family: myLightFont;
+	src: url("/etc/designs/task/design/fonts/TaskFont-Light.woff") format("woff");
+}
+
+@font-face {
+	font-family: myBoldFont;
+	src: url("/etc/designs/task/design/fonts/TaskFont-Bold.woff") format("woff");
+}
+
+div {
+	font-family: myLightFont;
+}
+
+button,
+button:active,
+button:focus  {
+	border:none;
+}
+
+:active, :hover, :focus {
+	outline: 0;
+	outline-offset: 0;
+}
+
+.linkField {
+	height: 35px;
+	width: 80%;
+	border-color: #000 !important;
+	border-width: 1px;
+	font-size: 20px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	margin-left: 5px;
+}
+
+.searchBox {
+	padding: 5px 5px 5px 5px;
+}
+
+.searchLinkLabel {
+	margin-bottom: 10px;
+	font-family: myBoldFont;
+	margin-left: 5px;
+}
+
+.send-button {
+	font-size: 20px;
+	color: #ffffff;
+	border-radius: 25px;
+	background-color: #000000;
+	height: 35px;
+	width: 15%;
+	margin-left: 20px;
+}
+
+.send-button:hover {
+	font-size: 20px;
+	color: #6D7177;
+	border-radius: 25px;
+	background-color: #A8A8A8;
+	height: 35px;
+	width: 15%;
+	margin-left: 20px;
+}
+
+.messageValidation {
+	margin-top: 10px;
+	color: #C8102F;
+	font-size: 15px;
+	margin-left: 5px;
+}
+
+.search-panel {
+	margin: 2px 2px 2px 2px;
+}
+
+.componentTitle {
+	color: #000000;
+	font-family: myBoldFont;
+	margin-left: 5px;
+}
