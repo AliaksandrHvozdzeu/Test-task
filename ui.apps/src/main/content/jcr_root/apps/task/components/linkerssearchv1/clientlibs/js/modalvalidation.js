@@ -105,5 +105,9 @@
         }
     });
 
+    function getLinks() {
+        alert("HEELO");
+    }
+
 
 })(jQuery, Coral);

@@ -1,4 +1,15 @@
-<div>Linkers Search Component</div>
-<div data-sly-use.model="com.task.core.models.LinkersSearchModelImpl">
-    <p>Row Count: ${model.countPaginationRows}</p>
-</div>
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html"
+<sly data-sly-call="${clientlib.css @ categories='practice.task'}"/>
+<sly data-sly-use.model="com.task.core.models.LinkersSearchModelImpl">
+    <div style="background-color: ${model.backgroundHexColor @ context='styleToken'};">
+        <h1 class="componentName">LINKS SEARCH</h1>
+        <span>SEARCH LINK</span>
+        <div>
+            <input id="lname" name="lname" type="text"/>
+            <button class="send-button" onclick="alert()" type="button">SUBMIT</button>
+        </div>
+    </div>
+
+    <sly data-sly-call="${clientlib.js @ categories='practice.task'}"/>
+</sly>
+</sly>
