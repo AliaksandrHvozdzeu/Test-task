@@ -4,7 +4,6 @@ import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
 
-import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
 /**
@@ -36,11 +35,6 @@ public class LinkersSearchModel {
 
     @Inject
     private String requestErrorMessage;
-
-    @PostConstruct
-    protected void init() {
-
-    }
 
     public int getCountPaginationRows() {
         return countPaginationRows;
