@@ -19,10 +19,10 @@ public class LinkersSearchModel {
     private String foundMessage;
 
     @Inject
-    private String errorMessageHexColor;
+    private String errorMessageColor;
 
     @Inject
-    private String backgroundHexColor;
+    private String backgroundColor;
 
     @Inject
     private String pathToResource;
@@ -44,12 +44,12 @@ public class LinkersSearchModel {
         return foundMessage;
     }
 
-    public String getErrorMessageHexColor() {
-        return errorMessageHexColor;
+    public String getErrorMessageColor() {
+        return errorMessageColor;
     }
 
-    public String getBackgroundHexColor() {
-        return backgroundHexColor;
+    public String getBackgroundColor() {
+        return backgroundColor;
     }
 
     public String getPathToResource() {

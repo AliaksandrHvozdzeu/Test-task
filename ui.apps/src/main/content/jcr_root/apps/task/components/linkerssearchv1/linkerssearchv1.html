@@ -7,7 +7,7 @@
         <input type="hidden" id="hiddenFoundMessage" value="${model.foundMessage}"/>
         <input type="hidden" id="hiddenNotFoundMessage" value="${model.notFoundMessage}"/>
         <input type="hidden" id="hiddenRequestErrorMessage" value="${model.requestErrorMessage}"/>
-        <div class="cmp--container" style="background-color: ${model.backgroundHexColor @ context='styleToken'};">
+        <div class="cmp--container" style="background-color: ${model.backgroundColor @ context='styleToken'};">
             <h1 class="cmp--container__title">LINKS SEARCH</h1>
             <label for="inputSearch" class="cmp--container__label" id="searchLinkLabel">SEARCH LINK</label>
             <div>
@@ -19,7 +19,7 @@
                     SUBMIT
                 </button>
                 <span class="cmp--container_not-valid-url disabled" id="notValidUrlLabel"
-                      style="color: ${model.errorMessageHexColor @ context='styleToken'};">${model.urlIsNotValidMessage}</span>
+                      style="color: ${model.errorMessageColor @ context='styleToken'};">${model.urlIsNotValidMessage}</span>
             </div>
             <div class="cmp--container__message_text" id="messageText"></div>
             <div id="searchResult" style="overflow-x: auto;" class="cmp--container">
