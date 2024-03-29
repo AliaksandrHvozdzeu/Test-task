@@ -22,8 +22,8 @@ html {
 
 button,
 button:active,
-button:focus  {
-	border:none;
+button:focus {
+	border: none;
 }
 
 div.pager {
@@ -41,10 +41,10 @@ div.pager span {
 	background: var(--black);
 	color: var(--white);
 	margin-right: 0.5em;
-}
 
-div.pager span.active {
-	background: var(--light-grey);
+	&.active {
+		background: var(--light-grey);
+	}
 }
 
 :active, :hover, :focus {
@@ -82,16 +82,13 @@ th, td {
 	margin-left: 5px;
 }
 
-.cmp--container__table-column-link {
-	font-family: myBoldFont, serif;
-}
-
+.cmp--container__table-column-link,
 .cmp--container__table-column-path {
 	font-family: myBoldFont, serif;
 }
 
 .cmp--container {
-	padding: 5px 5px 5px 5px;
+	padding: 5px;
 }
 
 .cmp--container__label {
@@ -108,16 +105,11 @@ th, td {
 	height: 35px;
 	width: 15%;
 	margin-left: 20px;
-}
 
-.cmp--container__submit-button:hover {
-	font-size: 20px;
-	color: var(--grey);
-	border-radius: 25px;
-	background-color: var(--light-grey);
-	height: 35px;
-	width: 15%;
-	margin-left: 20px;
+	&:hover {
+		color: var(--grey);
+		background-color: var(--light-grey);
+	}
 }
 
 .cmp--container__submit-button--disable {
@@ -145,7 +137,8 @@ th, td {
 	margin-left: 5px;
 }
 
-.hidden {
+.hidden,
+.disabled {
 	visibility: hidden;
 }
 
@@ -165,11 +158,7 @@ th, td {
 	font-style: italic;
 }
 
-.disabled {
-	visibility: hidden;
-}
-
 .cmp--container__input--error {
-	border-color: var(--red); !important;
+	border-color: var(--red) !important;
 	border-width: 2px;
 }
